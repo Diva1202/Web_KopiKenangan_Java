@@ -293,6 +293,8 @@
                 <li><a href="#menu-lengkap">Menu</a></li>
                 <li><a href="#ulasan">Ulasan</a></li>
                 <li><a href="#lokasi">Lokasi</a></li>
+                <li><a href="#" class="btn-logout" onclick="logoutUser(event)">Log Out</a>
+</li>
             </ul>
             <button id="btn-keranjang" onclick="toggleCart()">
                 🛒 Keranjang <span id="cart-count">0</span>
@@ -509,11 +511,9 @@
     <div id="toast"></div>
 
     <script>
-
     let slideIndex = 0;
     const slides = document.querySelectorAll('.slide');
     const dotsWrap = document.getElementById('slider-dots');
-
 
     slides.forEach((_, i) => {
         const d = document.createElement('div');
@@ -551,7 +551,7 @@
         }
 
         renderCart();
-        showToast(`🎉 ${nama} berhasil ditambahkan!`);
+        showToast(` ${nama} berhasil ditambahkan!`);
     }
 
     function ubahQty(index, perubahan) {
@@ -580,26 +580,23 @@
         const cartTotalPrice = document.getElementById('cart-total-price');
 
         const totalQty = keranjang.reduce((sum, item) => sum + item.qty, 0);
-        cartCount.textContent = totalQty;
+        cartCount.innerText = totalQty;
 
         if (keranjang.length === 0) {
-            cartItemsContainer.innerHTML = `<p class="cart-empty">Keranjang masih kosong.<br>Yuk pilih menu favoritmu!</p>`;
+            cartItemsContainer.innerHTML = '<p class="cart-empty">Keranjang masih kosong.<br>Yuk pilih menu favoritmu!</p>';
             cartFooter.style.display = 'none';
             return;
         }
 
         cartFooter.style.display = 'block';
+        let totalHarga = 0;
         cartItemsContainer.innerHTML = '';
 
-        let totalHarga = 0;
-
         keranjang.forEach((item, index) => {
-            const subTotal = item.harga * item.qty;
-            totalHarga += subTotal;
-
-            const itemFormat = document.createElement('div');
-            itemFormat.className = 'cart-item';
-            itemFormat.innerHTML = `
+            totalHarga += item.harga * item.qty;
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.innerHTML = `
                 <div class="cart-item-info">
                     <h4>${item.nama}</h4>
                     <span>Rp ${(item.harga * item.qty).toLocaleString('id-ID')}</span>
@@ -611,89 +608,71 @@
                 </div>
                 <button class="btn-hapus" onclick="hapusItem(${index})">🗑</button>
             `;
-            cartItemsContainer.appendChild(itemFormat);
+            cartItemsContainer.appendChild(itemElement);
         });
 
-        cartTotalPrice.textContent = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+        cartTotalPrice.innerText = 'Rp ' + totalHarga.toLocaleString('id-ID');
     }
-    function cariMenu(keyword) {
-        const cards = document.querySelectorAll('.menu-card');
-        const noResult = document.getElementById('no-result');
-        let ditemukan = false;
-        const lowKeyword = keyword.toLowerCase().trim();
-
-        cards.forEach(card => {
-            const namaMenu = card.getAttribute('data-nama').toLowerCase();
-            if (namaMenu.includes(lowKeyword)) {
-                card.classList.remove('hidden');
-                ditemukan = true;
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-
-        if (ditemukan || lowKeyword === "") {
-            noResult.style.display = 'none';
-        } else {
-            noResult.style.display = 'block';
-        }
-    }
-
-
-    let intervalCekOtomatis;
 
     function checkout() {
+        if (keranjang.length === 0) return;
         let totalHarga = keranjang.reduce((sum, item) => sum + (item.harga * item.qty), 0);
-        
-        document.getElementById('qris-total-text').textContent = `Rp ${totalHarga.toLocaleString('id-ID')}`;
-        
-        const btnKonfirmasi = document.querySelector('.btn-konfirmasi');
-        btnKonfirmasi.innerHTML = '✅ Konfirmasi Pembayaran';
-        btnKonfirmasi.disabled = false;
-        btnKonfirmasi.style.background = '#d4af37';
-
+        document.getElementById('qris-total-text').innerText = 'Rp ' + totalHarga.toLocaleString('id-ID');
         document.getElementById('modal-qris').classList.add('open');
-        toggleCart();
-
-        showToast("📱 Menunggu pembayaran via QRIS...");
-        intervalCekOtomatis = setTimeout(() => {
-            if (document.getElementById('modal-qris').classList.contains('open')) {
-                konfirmasiPembayaran();
-            }
-        }, 8000); 
     }
 
     function tutupQRIS() {
         document.getElementById('modal-qris').classList.remove('open');
-        clearTimeout(intervalCekOtomatis);
     }
 
     function konfirmasiPembayaran() {
-        clearTimeout(intervalCekOtomatis);
-        const btnKonfirmasi = document.querySelector('.btn-konfirmasi');
-        
-        btnKonfirmasi.innerHTML = '⏳ Mengecek Status Pembayaran...';
-        btnKonfirmasi.disabled = true;
-        btnKonfirmasi.style.background = '#aaa';
-
-        setTimeout(() => {
-            tutupQRIS();
-            keranjang = [];
-            renderCart();
-            showToast("✅ QRIS Berhasil Discan! Pesanan Anda sedang diproses.");
-        }, 2000);
+        tutupQRIS();
+        hapusSemua();
+        showToast(" Pembayaran berhasil! Pesanan Anda sedang diproses.");
     }
-
 
     function showToast(pesan) {
         const toast = document.getElementById('toast');
-        toast.textContent = pesan;
+        toast.innerText = pesan;
         toast.classList.add('show');
-
         setTimeout(() => {
             toast.classList.remove('show');
         }, 3000);
     }
+
+    function cariMenu(keyword) {
+        const cards = document.querySelectorAll('.menu-card');
+        let adaHasil = false;
+        cards.forEach(card => {
+            const nama = card.getAttribute('data-nama').toLowerCase();
+            if (nama.includes(keyword.toLowerCase())) {
+                card.classList.remove('hidden');
+                adaHasil = true;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+        document.getElementById('no-result').style.display = adaHasil ? 'none' : 'block';
+    }
+
+    function logoutUser(event) {
+        event.preventDefault();
+        const yakin = confirm("Apakah Anda yakin ingin keluar?");
+        if (yakin) {
+            alert("Anda telah berhasil Log Out!");
+            
+        }
+    }
+
+    function logoutUser(event){
+    event.preventDefault();
+
+    if(confirm("Apakah Anda yakin ingin logout?")){
+        alert("Logout berhasil");
+        window.location.href = "login.html";
+    }
+}
+
     </script>
 </body>
 </html>
