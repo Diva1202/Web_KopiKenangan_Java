@@ -26,7 +26,7 @@
         .menu-nav a { color: #fff; text-decoration: none; font-size: 15px; transition: color 0.3s; }
         .menu-nav a:hover { color: #d4af37; }
 
-
+  
         #btn-keranjang {
             background: #d4af37; color: #1a1a1a; border: none; border-radius: 50px;
             padding: 8px 18px; font-size: 14px; font-weight: 600; cursor: pointer;
@@ -38,7 +38,7 @@
             padding: 1px 6px; font-size: 11px; position: absolute; top: -5px; right: -5px;
         }
 
-
+  
         .hero-slider {
             position: relative; height: 100vh; overflow: hidden;
         }
@@ -66,7 +66,6 @@
         .btn-utama:hover { background-color: #f7e1a0; transform: translateY(-2px); }
         .btn-kedua { border: 2px solid #fff; color: #fff; background: transparent; }
         .btn-kedua:hover { background-color: #fff; color: #1a1a1a; transform: translateY(-2px); }
-
 
         .slider-controls {
             position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
@@ -111,6 +110,7 @@
         #search-input:focus { box-shadow: 0 0 0 3px rgba(212,175,55,0.25); }
         #no-result { text-align: center; color: #999; font-size: 15px; display: none; margin-top: 10px; }
 
+
         .menu-wrapper { display: flex; gap: 40px; align-items: flex-start; }
         .menu-left, .menu-right { flex: 1; }
         .menu-category-title {
@@ -139,7 +139,6 @@
         }
         .btn-pesan:hover { background: #c9a227; }
 
-
         .promo-banner {
             background: #d4af37; color: #1a1a1a; text-align: center;
             padding: 20px; font-weight: 600; border-radius: 8px; margin-bottom: 40px;
@@ -167,7 +166,7 @@
         }
         .wa-floating-btn:hover { background: #128c7e; }
 
-   
+
         .modal-overlay {
             display: none; position: fixed; inset: 0;
             background: rgba(0,0,0,0.6); z-index: 9999;
@@ -203,7 +202,7 @@
         }
         .btn-konfirmasi:hover { background: #c9a227; }
 
-
+  
         #cart-sidebar {
             position: fixed; right: -380px; top: 0; width: 360px; height: 100vh;
             background: #fff; z-index: 8000; box-shadow: -4px 0 20px rgba(0,0,0,0.15);
@@ -368,15 +367,15 @@
                 <h3 class="menu-category-title">Kopi Signature</h3>
                 <div class="menu-container" id="cat-signature">
                     <div class="menu-card" data-nama="Kopi Kenangan Mantan" data-harga="22000">
-                        <div class="menu-img-wrapper"><img src="3.jpg" alt="Kopi Kenangan Mantan"></div>
+                        <div class="menu-img-wrapper"><img src="image/3.jpg" alt="Kopi Kenangan Mantan"></div>
                         <div class="menu-info"><h3>Kopi Kenangan Mantan</h3><p>Perpaduan espresso dan gula aren asli.</p><span class="price">Rp 22.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Kopi Kenangan Mantan', 22000)">+ Tambah ke Keranjang</button></div>
                     </div>
                     <div class="menu-card" data-nama="Dua Shot Iced Shaken" data-harga="22000">
-                        <div class="menu-img-wrapper"><img src="4.jpg" alt="Dua Shot Iced Shaken"></div>
+                        <div class="menu-img-wrapper"><img src="image/4.jpg" alt="Dua Shot Iced Shaken"></div>
                         <div class="menu-info"><h3>Dua Shot Iced Shaken</h3><p>Espresso pekat dengan gula aren.</p><span class="price">Rp 22.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Dua Shot Iced Shaken', 22000)">+ Tambah ke Keranjang</button></div>
                     </div>
                     <div class="menu-card" data-nama="Kopi Avocado Kenangan" data-harga="22000">
-                        <div class="menu-img-wrapper"><img src="5.jpg" alt="Kopi Avocado Kenangan"></div>
+                        <div class="menu-img-wrapper"><img src="image/5.jpg" alt="Kopi Avocado Kenangan"></div>
                         <div class="menu-info"><h3>Kopi Avocado Kenangan</h3><p>Espresso creamy alpukat gula aren.</p><span class="price">Rp 22.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Kopi Avocado Kenangan', 22000)">+ Tambah ke Keranjang</button></div>
                     </div>
                 </div>
@@ -384,15 +383,15 @@
                 <h3 class="menu-category-title">Non-Kopi</h3>
                 <div class="menu-container" id="cat-nonkopi">
                     <div class="menu-card" data-nama="Susu Gula Aren" data-harga="18000">
-                        <div class="menu-img-wrapper"><img src="9.jpg" alt="Susu Gula Aren"></div>
+                        <div class="menu-img-wrapper"><img src="image/9.jpg" alt="Susu Gula Aren"></div>
                         <div class="menu-info"><h3>Susu Gula Aren</h3><p>Susu segar premium dengan gula aren.</p><span class="price">Rp 18.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Susu Gula Aren', 18000)">+ Tambah ke Keranjang</button></div>
                     </div>
                     <div class="menu-card" data-nama="Cokelat Kenangan" data-harga="18000">
-                        <div class="menu-img-wrapper"><img src="10.jpg" alt="Cokelat Kenangan"></div>
+                        <div class="menu-img-wrapper"><img src="image/10.jpg" alt="Cokelat Kenangan"></div>
                         <div class="menu-info"><h3>Cokelat Kenangan</h3><p>Cokelat kental dengan gula aren khas.</p><span class="price">Rp 18.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Cokelat Kenangan', 18000)">+ Tambah ke Keranjang</button></div>
                     </div>
                     <div class="menu-card" data-nama="Matcha Latte" data-harga="18000">
-                        <div class="menu-img-wrapper"><img src="11.jpg" alt="Matcha Latte"></div>
+                        <div class="menu-img-wrapper"><img src="image/11.jpg" alt="Matcha Latte"></div>
                         <div class="menu-info"><h3>Matcha Latte</h3><p>Matcha Jepang premium susu gula aren.</p><span class="price">Rp 18.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Matcha Latte', 18000)">+ Tambah ke Keranjang</button></div>
                     </div>
                 </div>
@@ -400,15 +399,15 @@
                 <h3 class="menu-category-title">Snack & Pastry</h3>
                 <div class="menu-container" id="cat-snack">
                     <div class="menu-card" data-nama="Roti Coklat Clasik" data-harga="12000">
-                        <div class="menu-img-wrapper"><img src="12.jpg" alt="Roti Coklat Clasik"></div>
+                        <div class="menu-img-wrapper"><img src="image/12.jpg" alt="Roti Coklat Clasik"></div>
                         <div class="menu-info"><h3>Roti Coklat Clasik</h3><p>Roti lembut dengan coklat melimpah.</p><span class="price">Rp 12.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Roti Coklat Clasik', 12000)">+ Tambah ke Keranjang</button></div>
                     </div>
                     <div class="menu-card" data-nama="Bambang Choco Cheese Toast" data-harga="12000">
-                        <div class="menu-img-wrapper"><img src="13.jpg" alt="Bambang Choco Cheese Toast"></div>
+                        <div class="menu-img-wrapper"><img src="image/13.jpg" alt="Bambang Choco Cheese Toast"></div>
                         <div class="menu-info"><h3>Bambang Choco Cheese Toast</h3><p>Roti panggang dengan coklat dan keju.</p><span class="price">Rp 12.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Bambang Choco Cheese Toast', 12000)">+ Tambah ke Keranjang</button></div>
                     </div>
                     <div class="menu-card" data-nama="Choco Chip Cookies" data-harga="12000">
-                        <div class="menu-img-wrapper"><img src="14.jpg" alt="Choco Chip Cookies"></div>
+                        <div class="menu-img-wrapper"><img src="image/14.jpg" alt="Choco Chip Cookies"></div>
                         <div class="menu-info"><h3>Choco Chip Cookies</h3><p>Cookies lezat cocok teman kopi.</p><span class="price">Rp 12.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Choco Chip Cookies', 12000)">+ Tambah ke Keranjang</button></div>
                     </div>
                 </div>
@@ -418,15 +417,15 @@
                 <h3 class="menu-category-title">Kopi Classic</h3>
                 <div class="menu-container" id="cat-classic">
                     <div class="menu-card" data-nama="Americano" data-harga="18000">
-                        <div class="menu-img-wrapper"><img src="6.jpg" alt="Americano"></div>
+                        <div class="menu-img-wrapper"><img src="image/6.jpg" alt="Americano"></div>
                         <div class="menu-info"><h3>Americano</h3><p>Kopi hitam espresso yang kuat.</p><span class="price">Rp 18.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Americano', 18000)">+ Tambah ke Keranjang</button></div>
                     </div>
                     <div class="menu-card" data-nama="Café Latte" data-harga="18000">
-                        <div class="menu-img-wrapper"><img src="7.jpg" alt="Café Latte"></div>
+                        <div class="menu-img-wrapper"><img src="image/7.jpg" alt="Café Latte"></div>
                         <div class="menu-info"><h3>Café Latte</h3><p>Espresso lembut dengan susu segar.</p><span class="price">Rp 18.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Café Latte', 18000)">+ Tambah ke Keranjang</button></div>
                     </div>
                     <div class="menu-card" data-nama="Cappuccino" data-harga="18000">
-                        <div class="menu-img-wrapper"><img src="8.jpg" alt="Cappuccino"></div>
+                        <div class="menu-img-wrapper"><img src="image/8.jpg" alt="Cappuccino"></div>
                         <div class="menu-info"><h3>Cappuccino</h3><p>Latte dengan foam lembut di atasnya.</p><span class="price">Rp 18.000</span><button class="btn-pesan" onclick="tambahKeranjang(this, 'Cappuccino', 18000)">+ Tambah ke Keranjang</button></div>
                     </div>
                 </div>
